@@ -12,8 +12,8 @@ namespace DynamicProgramming
             int n = wt.Length;
 
             var knapsack = new Knapsack(n, w);
-            Console.WriteLine(knapsack.Knapsack01Recursive(wt, val, w, n));
-            Console.WriteLine(knapsack.Knapsack01Memoized(wt, val, w, n));
+            Console.WriteLine(knapsack.Knapsack01RecursiveMemoized(wt, val, w, n));
+            Console.WriteLine(knapsack.Knapsack01Tabulation(wt, val, w, n));
 
             var s = new SubsetSum(n, w);
             Console.WriteLine(s.IsFound(wt, w, n));

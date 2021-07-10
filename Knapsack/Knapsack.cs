@@ -19,7 +19,7 @@ namespace DynamicProgramming
                     dp[i, j] = -1;
         }
 
-        public int Knapsack01Recursive(int[] wt, int[] val, int w, int n)
+        public int Knapsack01RecursiveMemoized(int[] wt, int[] val, int w, int n)
         {
             // Check when n = 0 or w = 0. In this case the answer must be 0 as we cannot get any highest value
             if (n == 0 || w == 0)
@@ -42,21 +42,21 @@ namespace DynamicProgramming
                  * 
                  * Once we choose our option we store the value in the dp array
                  */
-                dp[n, w] = Math.Max(val[n - 1] + Knapsack01Recursive(wt, val, w - wt[n - 1], n - 1), Knapsack01Recursive(wt, val, w, n - 1));
+                dp[n, w] = Math.Max(val[n - 1] + Knapsack01RecursiveMemoized(wt, val, w - wt[n - 1], n - 1), Knapsack01RecursiveMemoized(wt, val, w, n - 1));
             }
 
             // If the weight of current item is more than what is available int he knapsack we skip it
             else
             {
                 // We store the value in the dp array
-                dp[n, w] = Knapsack01Recursive(wt, val, w, n - 1);
+                dp[n, w] = Knapsack01RecursiveMemoized(wt, val, w, n - 1);
             }
 
             // We return the calculate value as our answer
             return dp[n, w];
         }
 
-        public int Knapsack01Memoized(int[] wt, int[] val, int w, int n)
+        public int Knapsack01Tabulation(int[] wt, int[] val, int w, int n)
         {
             /* We go from the top of the dp array to the bottom using a dual for loop
              * i = n
