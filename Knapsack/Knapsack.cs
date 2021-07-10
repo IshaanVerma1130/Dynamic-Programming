@@ -68,14 +68,17 @@ namespace DynamicProgramming
                 {
                     // We intitialize the dp array with 0 where i = 0 and j = 0 (Initilization of dp matrix)
                     if (i == 0 || j == 0)
+                    {
                         dp[i, j] = 0;
+                        continue;
+                    }
 
                     /* We check if the weight of the previous item is less than the current weight remaining in the knapsack
                      * We take the maximum out of when:
                      *      1. We include the value of the previous item
                      *      2. We dont include the value of the previous item
                      */
-                    else if (wt[i - 1] <= j)
+                    if (wt[i - 1] <= j)
                         dp[i, j] = Math.Max(val[i - 1] + dp[i - 1, j - wt[i - 1]], dp[i - 1, j]);
 
                     else
