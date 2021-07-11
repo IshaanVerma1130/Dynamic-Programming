@@ -6,7 +6,7 @@ namespace DynamicProgramming
 {
     class SubsetSum
     {
-        private bool[,] dp;
+        public bool[,] dp;
 
         public SubsetSum(int n, int w)
         {
