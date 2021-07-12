@@ -9,15 +9,16 @@ namespace DynamicProgramming
             int[] val = { 1, 3, 4, 5, 7 };
             int[] wt = { 1, 5, 3, 7, 4 };
             int n = wt.Length;
-            int w = 2;
+            int w = 10;
 
-            var knapsack = new Knapsack(n, w);
+            var knapsack = new Knapsack01(n, w);
             var subsetSum = new SubsetSum(n, w);
             var equalSumSubset = new EqualSumPartition();
             var countSubsetSum = new CountSubsetSum(n, w);
             var minSubsetDiff = new MinSubsetDiff();
             var countSubsetDiff = new CountSubsetDiff();
-            var targetCombos = new TargetSum();
+            var targetCombo = new TargetSum();
+            var coinCombo = new CoinChange(n, w);
 
             // Knapsack 01 Recursive Memoization
             Console.WriteLine(knapsack.Knapsack01RecursiveMemoized(wt, val, w, n));
@@ -40,8 +41,14 @@ namespace DynamicProgramming
             // Count of subsets with their diff equal to a given number
             Console.WriteLine(countSubsetDiff.CountSubsets(wt, w, n));
 
-            // number of cmobinations to get desired sum by changing signs in an array
-            Console.WriteLine(targetCombos.Combos(wt, w, n));
+            // Number of combinations to get desired sum by changing signs in an array
+            Console.WriteLine(targetCombo.Combos(wt, w, n));
+
+            // Number of ways to choose coins equal to a given sum
+            Console.WriteLine(coinCombo.MaxNoOfWays(wt, w, n));
+
+            // Min number of coins that add up tp a given sum
+            Console.WriteLine(coinCombo.MinNoOfCoins(wt, w, n));
         }
     }
 }
